@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "259652702583",
+    "project_id": "dstl-d22fc",
+    "storage_bucket": "dstl-d22fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259652702583:android:442c87321f1217bd3d1172",
+        "android_client_info": {
+          "package_name": "com.dsit.dsit_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4mFG_IOrWrbbo2MNpgwBR3peaPCdwCS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

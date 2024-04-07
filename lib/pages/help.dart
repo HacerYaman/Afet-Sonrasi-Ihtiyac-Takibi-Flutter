@@ -55,7 +55,7 @@ class _HelpPageState extends State<HelpPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'İhtiyaç Seçiniz',
+                  RequestString.page_title,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -70,7 +70,7 @@ class _HelpPageState extends State<HelpPage> {
                     );
                   }).toList(),
                   decoration: const InputDecoration(
-                    labelText: 'İhtiyaç Kategorisi',
+                    labelText: RequestString.need_category,
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (String? value) {
@@ -81,7 +81,7 @@ class _HelpPageState extends State<HelpPage> {
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Açıklama ve Ek Bilgi',
+                  RequestString.description_info,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -89,15 +89,15 @@ class _HelpPageState extends State<HelpPage> {
                 const SizedBox(height: 10),
                  TextField(
                   controller: detailController,
-                  decoration: InputDecoration(
-                    labelText: 'Açıklama',
+                  decoration: const InputDecoration(
+                    labelText: RequestString.description,
                     border: OutlineInputBorder(),
                   ),
                   maxLines: 3,
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Konum Teyit ',
+                  RequestString.location_info,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -114,7 +114,7 @@ class _HelpPageState extends State<HelpPage> {
                           Navigator.pushNamed(context, "/toHome");
                         }catch (e){
                         }
-                      }, button_text: "Talep Gönder"),
+                      }, button_text: RequestString.send_request),
                 ),
               ],
             ),

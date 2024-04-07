@@ -46,10 +46,12 @@ class AppHelper {
   Future<void> requestServiceHelp(
       String category, String detail, String adres) async {
     try {
+      String? user_id = _firebaseAuth.currentUser?.uid;
       _firebaseFirestore.collection("service_request").doc().set({
         "category": category,
         "detail": detail,
         "adres": adres,
+        "userid": user_id
       });
     } catch (e) {
       throw Exception(e);
@@ -59,10 +61,12 @@ class AppHelper {
   Future<void> requestSNeedHelp(
       String category, String detail, String adres) async {
     try {
+      String? user_id = _firebaseAuth.currentUser?.uid;
       _firebaseFirestore.collection("necessity_request").doc().set({
         "category": category,
         "detail": detail,
         "adres": adres,
+        "user_id": user_id,
       });
     } catch (e) {
       throw Exception(e);

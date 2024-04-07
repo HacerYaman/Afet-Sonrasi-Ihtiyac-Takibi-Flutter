@@ -1,6 +1,7 @@
 import 'package:dsit_app/pages/help.dart';
 import 'package:dsit_app/pages/home_page.dart';
 import 'package:dsit_app/pages/login_page.dart';
+import 'package:dsit_app/pages/my_requests.dart';
 import 'package:dsit_app/pages/need.dart';
 import 'package:dsit_app/pages/register_page.dart';
 import 'package:dsit_app/pages/welcome_page.dart';
@@ -14,6 +15,7 @@ class AppRouter {
     const String toHome="/toHome";
     const String toNeed="/toNeed";
     const String toHelp="/toHelp";
+    const String toMyRequests="/toMyRequests";
 
     switch (settings.name) {
       case toAuthRoute:
@@ -28,12 +30,13 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => NeedPage());
       case toHelp:
         return MaterialPageRoute(builder: (_) => HelpPage());
-
+      case toMyRequests:
+        return MaterialPageRoute(builder: (_)=> MyRequests());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
               appBar: AppBar(),
-              body: Text("ters giden bir şey oldu"),
+              body: const Text("ters giden bir şey oldu"),
             ));
     }
   }

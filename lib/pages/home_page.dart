@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       future: AppHelper().getUserInfo(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
@@ -42,13 +42,13 @@ class _HomePageState extends State<HomePage> {
             key: _scaffoldKey,
             appBar: AppBar(
               centerTitle: true,
-              title: Text(AppConstString.home_page),
+              title: const Text(AppConstString.home_page),
               automaticallyImplyLeading: false,
               leading: IconButton(
                 onPressed: () {
                   _scaffoldKey.currentState!.openDrawer();
                 },
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
               ),
               actions: [
                 IconButton(
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                     AppHelper().signOut();
                     Navigator.pushNamed(context, "/toAuthRoute");
                   },
-                  icon: Icon(Icons.logout_outlined),
+                  icon: const Icon(Icons.logout_outlined),
                 )
               ],
             ),
@@ -68,24 +68,30 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       color: AppColors.button_color,
                     ),
-                    child: Text(
-                      'Kullanıcı maili ve telefon',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                      ),
-                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(AppConstString.app_title),
+                        Icon(Icons.help_center, size: 30,)
+                      ],
+                    )
                   ),
                   ListTile(
-                    title: Text('İhtiyaç Talebi Gönder'),
+                    title: const Text('İhtiyaç Talebi Gönder'),
                     onTap: () {
                       Navigator.pushNamed(context, "/toNeed");
                     },
                   ),
                   ListTile(
-                    title: Text('Güvenlik Gücü Yardım Talebi '),
+                    title: const Text('Güvenlik Gücü Yardım Talebi '),
                     onTap: () {
                       Navigator.pushNamed(context, "/toHelp");
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Taleplerimi Görüntüle'),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/toMyRequests");
                     },
                   ),
                 ],
@@ -96,7 +102,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Duyurular",
                     style: TextStyle(
                       fontSize: 20,
@@ -108,10 +114,10 @@ class _HomePageState extends State<HomePage> {
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     height: MediaQuery.sizeOf(context).height * 0.3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     "Hesap Bilgileri",
                     style: TextStyle(
                       fontSize: 20,
@@ -130,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(4),
                     child: Text('📍 $address'),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
@@ -138,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                       child: FloatingActionButton(
                         onPressed: () {},
                         backgroundColor: Colors.red,
-                        child: Icon(Icons.call),
+                        child: const Icon(Icons.call),
                       ),
                     ),
                   )

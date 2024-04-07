@@ -1,10 +1,8 @@
-import "package:dsit_app/consts/app_colors.dart";
 import "package:dsit_app/widgets/custom_button.dart";
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:geolocator/geolocator.dart";
 
+import "../consts/app_const_string.dart";
 import "../firebase_db_helper.dart";
 
 class NeedPage extends StatefulWidget {
@@ -39,7 +37,7 @@ class _NeedPageState extends State<NeedPage> {
     try {
       Position position = await _determinePosition();
       setState(() {
-        _currentLocation = 'Latitude: ${position.latitude}, Longitude: ${position.longitude}, Doğruluk oranı ${position.accuracy} ';
+        _currentLocation = 'Enlem: ${position.latitude}, Boylam: ${position.longitude}, Doğruluk oranı ${position.accuracy} ';
       });
     } catch (e) {
       setState(() {
@@ -64,7 +62,7 @@ class _NeedPageState extends State<NeedPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'İhtiyaç Seçiniz',
+                  RequestString.page_title,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -79,7 +77,7 @@ class _NeedPageState extends State<NeedPage> {
                     );
                   }).toList(),
                   decoration: const InputDecoration(
-                    labelText: 'İhtiyaç Kategorisi',
+                    labelText: RequestString.need_category,
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (String? value) {
@@ -90,7 +88,7 @@ class _NeedPageState extends State<NeedPage> {
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Açıklama ve Ek Bilgi',
+                  RequestString.description_info,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -98,15 +96,15 @@ class _NeedPageState extends State<NeedPage> {
                 const SizedBox(height: 10),
                 TextField(
                   controller: _detailController,
-                  decoration: InputDecoration(
-                    labelText: 'Açıklama',
+                  decoration: const InputDecoration(
+                    labelText: RequestString.description,
                     border: OutlineInputBorder(),
                   ),
                   maxLines: 3,
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'Konum Teyit',
+                  RequestString.location_info,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -125,7 +123,7 @@ class _NeedPageState extends State<NeedPage> {
                           } catch (e) {}
                         }
                       },
-                      button_text: "Talep Gönder"),
+                      button_text: RequestString.send_request),
                 ),
               ],
             ),

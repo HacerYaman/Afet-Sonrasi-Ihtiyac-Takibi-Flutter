@@ -17,3 +17,15 @@ class AppConstString{
   ];
 
 }
+
+class RequestString{
+
+  static const String page_title="İhtiyaç Talebi Gönder";
+  static const String pick_need="İhtiyaç Seçiniz";
+  static const String need_category="İhtiyaç Kategorisi";
+  static const String description_info="Açıklama ve Ek Bilgi";
+  static const String description="Açıklama";
+  static const String location_info="Konum Teyit";
+  static const String send_request="Talep Gönder";
+
+}

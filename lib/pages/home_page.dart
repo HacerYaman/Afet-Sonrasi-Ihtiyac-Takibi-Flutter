@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             final User? currentUser = UserService.currentUser;
             return _buildScaffold(_scaffoldKey, context, currentUser);
           } else {
-            return Text("ERror");
+            return const Text("ERror");
           }
         });
   }
@@ -113,39 +113,51 @@ class _HomePageState extends State<HomePage> {
                     Tab(text: "Dikkat Edilmesi Gerekenler")
                   ]),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: TabBarView(children: [
-                      ListView(
+                    height: MediaQuery.of(context).size.height * 0.55,
+                    child: const TabBarView(children: [
+                      Column(
                         children: [
-                          const ListTile(
+                          ListTile(
+                            leading: Icon(Icons.warning),
+                            title: Text(
+                                'Hatay Bölgesinde deprem'),
+                            subtitle: Text(
+                                'Kırkhan - 4.4 - 10km derinlik'),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.warning),
+                            title: Text(
+                                'Mersin Bölgesinde deprem'),
+                            subtitle: Text(
+                                'Yenişehir - 1.4 - 7km derinlik'),),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          ListTile(
+                            leading: Icon(Icons.check_circle),
+                            title: Text('Deprem anında yapılması gerekenler'),
+                            subtitle: Text(
+                                '1. Sakin olun, panik yapmayın.\n2. Güvenli bir alana geçin.\n3. Tehlikeli eşyaları tutun veya kapatın.'),
+                          ),
+                          ListTile(
+                            leading: Icon(Icons.check_circle),
+                            title: Text('Acil durum çantası hazırlığı'),
+                            subtitle: Text(
+                                'Acil durum çantasında gerekli ilaçlar, su ve temel malzemeler bulunmalıdır.'),
+                          ),
+                          ListTile(
                             leading: Icon(Icons.warning),
                             title: Text(
                                 'Hatalı depolama durumunda tehlike oluşturabilecek kimyasal maddeler'),
                             subtitle: Text(
                                 'Depolama koşullarına uygun olmayan kimyasal maddelerin saklanması risk oluşturabilir.'),
                           ),
-                          const ListTile(
+                          ListTile(
                             leading: Icon(Icons.warning),
                             title: Text('Yangın güvenlik prosedürleri'),
                             subtitle: Text(
                                 'Yangın tüplerinin doğru kullanımı ve yangın söndürme cihazlarının yerlerinin bilinmesi önemlidir.'),
-                          ),
-                          ListView(
-                            children: const [
-                              ListTile(
-                                leading: Icon(Icons.check_circle),
-                                title:
-                                    Text('Deprem anında yapılması gerekenler'),
-                                subtitle: Text(
-                                    '1. Sakin olun, panik yapmayın.\n2. Güvenli bir alana geçin.\n3. Tehlikeli eşyaları tutun veya kapatın.'),
-                              ),
-                              ListTile(
-                                leading: Icon(Icons.check_circle),
-                                title: Text('Acil durum çantası hazırlığı'),
-                                subtitle: Text(
-                                    'Acil durum çantasında gerekli ilaçlar, su ve temel malzemeler bulunmalıdır.'),
-                              ),
-                            ],
                           ),
                         ],
                       ),

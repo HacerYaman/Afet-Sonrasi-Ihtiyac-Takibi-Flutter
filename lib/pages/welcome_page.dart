@@ -1,7 +1,5 @@
 import 'package:dsit_app/consts/app_assets.dart';
 import 'package:dsit_app/consts/app_const_string.dart';
-import 'package:dsit_app/pages/login_page.dart';
-import 'package:dsit_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_button.dart';
@@ -41,15 +39,15 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(color: Colors.black.withOpacity(0.8)),
               ),
             ),
-            Spacer(),
-            Text("ya da"),
+            const Spacer(),
+            const Text("ya da"),
             CustomButtonWidget(
               onPress: () {
                 Navigator.pushNamed(context, "/toHome");
               },
               button_text: AppConstString.edevlet_button_text,
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),

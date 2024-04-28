@@ -73,15 +73,4 @@ class AppHelper {
     }
   }
 
-  Future<Map<String, dynamic>> getUserInfo() async {
-    final String userId = _firebaseAuth.currentUser!.uid;
-
-    final DocumentSnapshot snapshot = await _firebaseFirestore.collection('users').doc(userId).get();
-    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-    final String? adress = data?["adress"];
-    final String? email = data?["email"];
-    final String? phoneNo = data?["phoneNo"];
-    return data;
-  }
-
 }

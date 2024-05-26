@@ -55,6 +55,17 @@ class _MyRequestsState extends State<MyRequests> {
         .collection("service_request")
         .where("userid", isEqualTo: userId)
         .get();
-    return querySnapshot.docs;
+
+    final querySnapshot2 = await _firestore
+        .collection("necessity_request")
+        .where("user_id", isEqualTo: userId)
+        .get();
+
+    final allSnapshots = [
+      ...querySnapshot.docs,
+      ...querySnapshot2.docs,
+    ];
+
+    return allSnapshots;
   }
 }

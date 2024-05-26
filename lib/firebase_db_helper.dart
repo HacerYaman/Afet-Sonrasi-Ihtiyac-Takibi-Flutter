@@ -27,8 +27,6 @@ class AppHelper {
       UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      //create a file for users collection
-
       _firebaseFirestore.collection("users").doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         "email": email,

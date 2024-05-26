@@ -1,17 +1,39 @@
 import 'package:dsit_app/firebase_db_helper.dart';
 import 'package:dsit_app/widgets/custom_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../consts/app_colors.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
   Widget build(BuildContext context) {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
+    String _errorMessage = '';
+
+    Future<void> _login() async {
+      try {
+        UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        Navigator.pushNamed(context, "/toHome");
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          _errorMessage = e.message ?? 'An error occurred';
+        });
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -75,17 +97,16 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 30),
                     child: CustomButtonWidget(
                         onPress: () {
-                          try {
-                            AppHelper().signInWithEmailandPassword(
-                                _emailController.text,
-                                _passwordController.text);
-                            Navigator.pushNamed(context, "/toHome");
-                          } catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(e.toString()),
-                              ),
-                            );
+                          if(_emailController.text.isNotEmpty && _passwordController.text.isNotEmpty){
+                            try {
+                              _login();
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(e.toString()),
+                                ),
+                              );
+                            }
                           }
                         },
                         button_text: "Giriş Yap"),
@@ -100,3 +121,5 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+
